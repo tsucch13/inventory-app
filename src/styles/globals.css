@@ -1,0 +1,59 @@
+/* globals.css */
+
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --color-primary: #fcd0a1;
+  --color-secondary: #b1b695;
+  --color-tertiary: #a690a4;
+  --color-accent: #5e4b56;
+  --color-background: #afd2e9;
+} */
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+} */
+
+/* body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+} */
+
+/* body {
+  /* ... existing styles ... */
+  /* background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/watercolor.png");
+} 
+*/ 
+
+/* .bg-gradient-to-r {
+  background-image: linear-gradient(to right, #FFEAEC, #F39A9D);
+} */
+
+/* .neon-text {
+  text-shadow: 0 0 8px #fff, 0 0 10px #fff, 0 0 12px #fff, 0 0 14px #ff77ff, 0 0 16px #ff77ff, 0 0 18px #ff77ff, 0 0 20px #ff77ff;
+} */
+
+
+/* 
+.bg-pattern-pattern1 {
+  background-image: linear-gradient(to right, var(--color-primary), var(--color-background));
+  /* Additional background properties */
+
+
+
+/* Rest of the CSS file */
+/* ... */

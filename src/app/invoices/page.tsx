@@ -3,7 +3,6 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import CreateProduct from "@/components/CreateProduct";
-import "../styles/globals.css";
 import Navbar from "@/components/NavBar";
 import { AppShell, Title } from "@mantine/core";
 import Demo from "@/components/AppShell";
@@ -11,15 +10,33 @@ import AppShellDemo from "@/components/AppShell";
 import ProductList from "@/components/ProductsList";
 import { ModalsProvider } from "@mantine/modals";
 import { Notifications } from "@mantine/notifications";
-import "@/scss/main.scss";
+import Page from "@/components/pdf/Page";
+import { Invoice } from "@/data/types";
+import InvoicePage from "@/components/pdf/InvoicePage";
 
 export default function Home() {
-  //eslint-disable jsx-a11y/alt-text
+  const savedInvoice =
+    typeof window !== "undefined" && window.localStorage.getItem("invoiceData");
+  let data = null;
+
+  try {
+    if (savedInvoice) {
+      data = JSON.parse(savedInvoice);
+    }
+  } catch (_e) {}
+
+  const onInvoiceUpdated = (invoice: Invoice) => {
+    typeof window !== "undefined" &&
+      window.localStorage.setItem("invoiceData", JSON.stringify(invoice));
+  };
+
   return (
     <ModalsProvider>
       <Notifications />
       <AppShellDemo>
-        <Title>Welcome!</Title>
+        <div className="app">
+          <InvoicePage data={data} onChange={onInvoiceUpdated} />
+        </div>
       </AppShellDemo>
     </ModalsProvider>
   );

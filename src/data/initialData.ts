@@ -1,0 +1,50 @@
+import { ProductLine, Invoice } from "./types";
+
+export const initialProductLine: ProductLine = {
+  description: "",
+  quantity: "1",
+  rate: "0.00",
+};
+
+export const initialInvoice: Invoice = {
+  logo: "",
+  logoWidth: 100,
+  title: "Factura",
+  companyName: "TodaLinda",
+  name: "",
+  companyAddress: "",
+  companyAddress2: "",
+  companyCountry: "Ecuador",
+  billTo: "Facturar a:",
+  clientName: "",
+  clientAddress: "",
+  clientAddress2: "",
+  clientCountry: "Ecuador",
+  invoiceTitleLabel: "Factura #",
+  invoiceTitle: "",
+  invoiceDateLabel: "Fecha",
+  invoiceDate: "",
+  invoiceDueDateLabel: "Fecha de vencimiento",
+  invoiceDueDate: "",
+  productLineDescription: "Descripcion",
+  productLineQuantity: "Cant.",
+  productLineQuantityRate: "Precio unitario",
+  productLineQuantityAmount: "Importe",
+  productLines: [
+    {
+      description: "Brochure Design",
+      quantity: "2",
+      rate: "100.00",
+    },
+    { ...initialProductLine },
+    { ...initialProductLine },
+  ],
+  subTotalLabel: "Sub Total",
+  taxLabel: "IVA (12%)",
+  totalLabel: "TOTAL",
+  currency: "$",
+  notesLabel: "Notas",
+  notes: "It was great doing business with you.",
+  termLabel: "Terminos y condiciones",
+  term: "Please make the payment by the due date.",
+};
