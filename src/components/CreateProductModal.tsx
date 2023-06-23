@@ -158,6 +158,7 @@ const CreateProductModal = ({
           label="Price"
           defaultValue={editItem ? editItem.price : 0}
           required
+          precision={2}
           parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
           formatter={(value) =>
             !Number.isNaN(parseFloat(value))
