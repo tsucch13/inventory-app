@@ -323,10 +323,10 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
           </View>
         </View>
 
-        <View className="mt-30 bg-dark flex" pdfMode={pdfMode}>
+        <View className="mt-30 bg-pink flex" pdfMode={pdfMode}>
           <View className="w-48 p-4-8" pdfMode={pdfMode}>
             <EditableInput
-              className="white bold"
+              className="black bold"
               value={invoice.productLineDescription}
               onChange={(value) =>
                 handleChange("productLineDescription", value)
@@ -337,7 +337,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
           </View>
           <View className="w-17 p-4-8" pdfMode={pdfMode}>
             <EditableInput
-              className="white bold right"
+              className="black bold right"
               value={invoice.productLineQuantity}
               onChange={(value) => handleChange("productLineQuantity", value)}
               pdfMode={pdfMode}
@@ -345,7 +345,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
           </View>
           <View className="w-17 p-4-8" pdfMode={pdfMode}>
             <EditableInput
-              className="white bold right"
+              className="black bold right"
               value={invoice.productLineQuantityRate}
               onChange={(value) =>
                 handleChange("productLineQuantityRate", value)
@@ -355,7 +355,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
           </View>
           <View className="w-18 p-4-8" pdfMode={pdfMode}>
             <EditableInput
-              className="white bold right"
+              className="black bold right"
               value={invoice.productLineQuantityAmount}
               onChange={(value) =>
                 handleChange("productLineQuantityAmount", value)
@@ -459,7 +459,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
                 </Text>
               </View>
             </View>
-            <View className="flex bg-gray p-5" pdfMode={pdfMode}>
+            <View className="flex bg-pink p-5" pdfMode={pdfMode}>
               <View className="w-50 p-5" pdfMode={pdfMode}>
                 <EditableInput
                   className="bold"

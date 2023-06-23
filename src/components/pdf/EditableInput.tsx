@@ -21,8 +21,6 @@ const EditableInput: FC<Props> = ({
 }) => {
   const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
 
-  console.log(suggestions);
-
   const handleInputChange = (inputValue: string) => {
     if (onChange) {
       onChange(inputValue);
