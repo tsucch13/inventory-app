@@ -8,7 +8,15 @@ interface Props {
 
 const Document: FC<Props> = ({ pdfMode, children }) => {
   return (
-    <>{pdfMode ? <PdfDocument>{children}</PdfDocument> : <>{children}</>}</>
+    <>
+      {pdfMode ? (
+        <PdfDocument style={{ backgroundColor: "#ffc0cb" }}>
+          {children}
+        </PdfDocument>
+      ) : (
+        <>{children}</>
+      )}
+    </>
   );
 };
 
