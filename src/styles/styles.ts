@@ -4,10 +4,16 @@ const colorDark = "#222";
 const colorDark2 = "#666";
 const colorGray = "#e3e3e3";
 const colorWhite = "#fff";
+const colorPink = "#ffc0cb";
+const colorBlack = "#000000";
 
 const styles: CSSClasses = {
   dark: {
     color: colorDark,
+  },
+
+  black: {
+    color: colorBlack,
   },
 
   white: {
@@ -20,6 +26,14 @@ const styles: CSSClasses = {
 
   "bg-gray": {
     backgroundColor: colorGray,
+  },
+
+  pink: {
+    color: colorPink,
+  },
+
+  "bg-pink": {
+    backgroundColor: colorPink,
   },
 
   flex: {
