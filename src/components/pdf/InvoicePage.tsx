@@ -38,6 +38,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
     data ? { ...data } : { ...initialInvoice }
   );
   const [subTotal, setSubTotal] = useState<number>();
+  const [total, setTotal] = useState<number>();
   const [saleTax, setSaleTax] = useState<number>();
   const [products, setProducts] = useState<Product[]>([]);
 
@@ -121,7 +122,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
 
   const calculateAmount = (quantity: string, rate: string) => {
     const quantityNumber = parseFloat(quantity);
-    const rateNumber = parseFloat(rate);
+    const rateNumber = parseFloat(rate) - parseFloat(rate) * 0.12;
     const amount =
       quantityNumber && rateNumber ? quantityNumber * rateNumber : 0;
 
@@ -130,23 +131,33 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
 
   useEffect(() => {
     let subTotal = 0;
+    let total = 0;
 
     invoice.productLines.forEach((productLine) => {
       const quantityNumber = parseFloat(productLine.quantity);
-      const rateNumber = parseFloat(productLine.rate);
+      const rateNumber =
+        parseFloat(productLine.rate) - parseFloat(productLine.rate) * 0.12;
+      const rateNumberPlane = parseFloat(productLine.rate);
       const amount =
         quantityNumber && rateNumber ? quantityNumber * rateNumber : 0;
 
+      const amount2 =
+        quantityNumber && rateNumberPlane
+          ? quantityNumber * rateNumberPlane
+          : 0;
+
       subTotal += amount;
+      total += amount2;
     });
 
+    setTotal(total);
     setSubTotal(subTotal);
   }, [invoice.productLines]);
 
   useEffect(() => {
     const match = invoice.taxLabel.match(/(\d+)%/);
     const taxRate = 12;
-    const saleTax = subTotal ? (subTotal * taxRate) / 100 : 0;
+    const saleTax = total ? (total * taxRate) / 100 : 0;
 
     setSaleTax(saleTax);
   }, [subTotal, invoice.taxLabel]);
@@ -395,7 +406,10 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
               <View className="w-17 p-4-8 pb-10" pdfMode={pdfMode}>
                 <EditableInput
                   className="dark right"
-                  value={productLine.rate}
+                  value={(
+                    parseFloat(productLine.rate) -
+                    parseFloat(productLine.rate) * 0.12
+                  ).toString()}
                   onChange={(value) =>
                     handleProductLineChange(i, "rate", value)
                   }
