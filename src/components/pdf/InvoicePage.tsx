@@ -95,6 +95,8 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
         // Update the rate based on the selected product
         productLine.rate = selectedProduct.price;
       }
+    } else if (field === "rate") {
+      productLine.rate = value; // Update the rate field directly
     } else {
       productLine[field] = value;
     }
