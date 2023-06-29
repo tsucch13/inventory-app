@@ -8,12 +8,14 @@ import {
   useMantineTheme,
   Stack,
   Group,
+  TextInput,
 } from "@mantine/core";
 import {
   getProducts,
   createProduct,
   updateProduct,
   deleteProduct,
+  searchProducts,
 } from "../api";
 import "../styles/globals.css";
 import Navbar from "./NavBar";
@@ -30,15 +32,24 @@ const ProductList = () => {
   const [editItem, setEditItem] = useState<Product | null>(null);
   const [viewMode, setViewMode] = useState(false);
   const [update, setUpdate] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
   const theme = useMantineTheme();
 
   useEffect(() => {
     fetchProducts();
-  }, [opened, update]);
+  }, [opened, update, searchQuery]);
 
   const fetchProducts = async () => {
     try {
-      const productList = await getProducts();
+      let productList = [];
+
+      if (searchQuery !== "") {
+        productList = await searchProducts(searchQuery);
+      } else {
+        productList = await getProducts();
+      }
+
       setProducts(productList);
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -160,6 +171,13 @@ const ProductList = () => {
           <div className="grid grid-cols-2 gap-4 mb-4">
             <Title order={2}>Product List</Title>
             <div className="text-right">
+              <TextInput
+                placeholder={"Search product"}
+                pb={"md"}
+                pt={"md"}
+                value={searchQuery}
+                onChange={(event) => setSearchQuery(event.currentTarget.value)}
+              />
               <Button
                 onClick={() => {
                   setEditItem(null);
